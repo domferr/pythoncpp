@@ -63,16 +63,7 @@ if (!PyArg_ParseTuple(args, "s", &prefix))
     - To create a python object of a string from a c++ string/char array do `PyObject* pyword = PyUnicode_FromString(cppstring)`
     - You cannot append a string in a python list, you can only append a python object into it! The append function can be called via `PyList_Append(list, pyword);`
     - Creating a python object of a string increases the reference count, remember to decrease it after you call `PyList_Append`
-6. [OPTIONAL] Implement iterator support to support iterating for each word in the trie
-    - Define a new iterator type and implement `.tp_iter` and `.tp_iternext`
-```
-typedef struct {
-    PyObject_HEAD
-    PyBitSet* bitset;
-    Py_ssize_t index;
-} PyBitSetIter;
-```
-7. Initialize the module (i.e. `datastruct` library) in `datastruct_module.cpp` like we did for the `hello` library
+5. Initialize the module (i.e. `datastruct` library) in `datastruct_module.cpp` like we did for the `hello` library
     - Remember to add the `Trie` Type like we added the `Counter` type before!
 
 ## Build & run
