@@ -51,19 +51,19 @@ static PyTypeObject PyTrieType = {
     .tp_new = PyType_GenericNew,
 };
 ```
-  - When you get the prefix from the args it is not a `std::string` but instead a `char*`!
+5. When you get the prefix from the args it is not a `std::string` but instead a `char*`!
 
 ```
 const char* prefix;
 if (!PyArg_ParseTuple(args, "s", &prefix))
     return nullptr;
 ```
-  - Good to know:
+6. Good to know:
     - To create a Python list do `PyObject* list = PyList_New(0);`
     - To create a python object of a string from a c++ string/char array do `PyObject* pyword = PyUnicode_FromString(cppstring)`
     - You cannot append a string in a python list, you can only append a python object into it! The append function can be called via `PyList_Append(list, pyword);`
     - Creating a python object of a string increases the reference count, remember to decrease it after you call `PyList_Append`
-5. Initialize the module (i.e. `datastruct` library) in `datastruct_module.cpp` like we did for the `hello` library
+7. Initialize the module (i.e. `datastruct` library) in `datastruct_module.cpp` like we did for the `hello` library
     - Remember to add the `Trie` Type like we added the `Counter` type before!
 
 ## Build & run
