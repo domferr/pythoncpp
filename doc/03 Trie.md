@@ -2,27 +2,20 @@
 
 Let's create a library which name is `datastruct`, it provides a `BitSet` class:
 ```python
-from datastruct import BitSet
+from datastruct import Trie
 
-b = BitSet(8)
+t = Trie()
+t.insert("car")
+t.insert("cart")
+t.insert("cat")
+t.insert("dog")
 
-b[3] = True
-print(b[3])       # 1
-print(len(b))     # 8
+print(f'word "cat" is in the Trie: {t.search("cat")}')
 
-b.clear(3)
-print(b.get(3))   # 0
-
-for bit in b:
-    print(bit, end="")
-# Output: 00000000
-
-BitSet(-17) # will throw an exception, negative value!
+print(t.starts_with("ca"))  # ['car', 'cart', 'cat']
+print(t.starts_with("dog"))  # ['dog']
+print(t.starts_with("z"))    # []
 ```
-
-## C++ bitset
-
-In C++ the `std::vector` class has a bitset specialization you can use: `std::vector<bool>`.
 
 ## Folder structure
 

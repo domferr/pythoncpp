@@ -5,15 +5,19 @@ Let's create a library which name is `hello`, it provides a `Counter` class and 
 from hello import Counter, bad_fun
 
 count = Counter()
-print(count.get())   # 0
+print(count.get())  # 0
 count.incr()
 count.incr()
-print(count.get())   # 2
+print(count.get())  # 2
 
 c2 = Counter(42)
-print(c2.get())  # 42
+print(c2.get())     # 42
 
-bad_fun() # will throw an exception
+c3 = Counter(17, factor=3)
+c3.incr()
+print(c3.get())     # 20
+
+bad_fun()           # will throw an exception
 ```
 
 Remember: Python's garbage collector uses **Reference Counting**!
